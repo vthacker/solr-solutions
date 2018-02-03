@@ -23,7 +23,7 @@ log4j.appender.updateMetricFile.MaxBackupIndex=9
 #- File to log to and log format
 log4j.appender.updateMetricFile.File=${solr.log}/updateMetric.log
 log4j.appender.updateMetricFile.layout=org.apache.log4j.EnhancedPatternLayout
-log4j.appender.updateMetricFile.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %m%n
+log4j.appender.updateMetricFile.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%X{collection} %X{shard} %X{replica} %X{core}] %m%n
 ```
 
 
