@@ -1,6 +1,6 @@
 # Capturing Solr Metrics To a Log File
 
-Solr 6.4+ has the ability to capture a lot of metrics. The[Metrics Reporting](http://lucene.apache.org/solr/guide/metrics-reporting.html)page gives a comprehensive introduction  
+Solr 6.4+ has the ability to capture a lot of metrics. The [Metrics Reporting](http://lucene.apache.org/solr/guide/metrics-reporting.html) page gives a comprehensive introduction  
 
 
 # Goal
