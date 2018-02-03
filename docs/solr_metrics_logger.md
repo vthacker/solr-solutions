@@ -1,13 +1,13 @@
-#Capturing Solr Metrics To a Log File
+# Capturing Solr Metrics To a Log File
 
 Solr 6.4+ has the ability to capture a lot of metrics. The[Metrics Reporting](http://lucene.apache.org/solr/guide/metrics-reporting.html)page gives a comprehensive introduction  
 
 
-#Goal
+# Goal
 I want to capture how my updates are performing, number of updates etc. and log them to a file every 60 seconds. 
 
 
-#Solution
+# Solution
 Firstly we need to define a separate logger which captures these metrics. We modify the `<solr-install>/server/resources/log4j.properties` file and add the following lines to define a new logger
 
 ```properties
