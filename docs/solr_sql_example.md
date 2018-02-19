@@ -1,10 +1,6 @@
-# Capturing Solr Metrics To a Log File
+# Solr's SQL capabilities
 
-Solr 6.4+ has the ability to capture a lot of metrics. The [Metrics Reporting](http://lucene.apache.org/solr/guide/metrics-reporting.html) page gives a comprehensive introduction  
-
-
-# Goal
-Demonstrate Solr's SQL capabilities 
+Create an example to demonstrate Solr's SQL capabilities 
 
 
 # MySQL Employees Data
