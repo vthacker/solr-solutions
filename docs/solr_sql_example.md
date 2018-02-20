@@ -177,19 +177,9 @@ Create a Zeppelin Notebook to execute SQL Queries
 
 Find 10 top earning employee names
 
-```sql
-select s.emp_no_s,s.salary_i,e.first_name_s,e.last_name_s,e.gender_s from 
-    (select emp_no_s,salary_i from salaries
-    order by salary_i desc
-    limit 10) s
-INNER JOIN employees e
-ON s.emp_no_s = e.emp_no_s
-limit 10;
+```sql 
 
-
-TODO: Why isn't this working 
-
-select s.emp_no_s,s.salary_max,e.first_name_s,e.last_name_s,e.gender_s from 
+select e.emp_no_s,s.salary_max,e.first_name_s,e.last_name_s,e.gender_s from 
     (select emp_no_s,max(salary_i) as salary_max from salaries 
     group by emp_no_s
     order by salary_max desc
