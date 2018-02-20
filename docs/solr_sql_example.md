@@ -175,19 +175,43 @@ Create a Zeppelin Notebook to execute SQL Queries
 # SQL Queries
 
 
-Find 10 top earning employee names
+Find 10 top earning employee names and display their departments
 
 ```sql 
 
-select e.emp_no_s,s.salary_max,e.first_name_s,e.last_name_s,e.gender_s from 
+select e.emp_no_s,s.salary_max,e.first_name_s,e.last_name_s,e.gender_s,d.dept_name_s from 
     (select emp_no_s,max(salary_i) as salary_max from salaries 
     group by emp_no_s
     order by salary_max desc
     limit 10) s
-INNER JOIN employees e
-ON s.emp_no_s = e.emp_no_s
+INNER JOIN employees e ON s.emp_no_s = e.emp_no_s
+INNER JOIN dept_emp de ON e.emp_no_s = de.emp_no_s
+INNER JOIN departments d ON de.dept_no_s = d.dept_no_s
 limit 10;
+
+NOTE: select s.emp_no_s instead of e.emp_no_s in the query doesn't work. Is it expected or a bug?
+NOTE : INNER JOIN dept_emp de ON e.emp_no_s = de.emp_no_s works but INNER JOIN dept_emp de ON s.emp_no_s = de.emp_no_s does not
 ```
+
+Highest salary per department
+
+```sql
+select max(s.salary_max) as max_salary, d.dept_name_s from 
+    (select emp_no_s,max(salary_i) as salary_max from salaries 
+    group by emp_no_s
+    order by salary_max desc) s
+INNER JOIN employees e ON s.emp_no_s = e.emp_no_s
+INNER JOIN dept_emp de ON e.emp_no_s = de.emp_no_s
+INNER JOIN departments d ON de.dept_no_s = d.dept_no_s
+group by d.dept_name_s
+order by max_salary desc
+limit 10;
+
+
+NOTE: avg doesn't work because of some typecasting issues
+NOTE: Using aggregationMode=map_reduce the inner select returns salary_max as a integer ( perhaps string?  ) VS the default which returns a decimal 
+```
+
 
 # Further research
 
